@@ -1,6 +1,6 @@
 /* ===== НАЛАШТУВАННЯ РЕКЛАМИ: вставте ID, порожнє значення = вимкнено ===== */
 window.ZB = {
-  GA4: '',          // G-XXXXXXXXXX  (Google Analytics 4)
+  GA4: 'G-R69DVC9LL5', // G-XXXXXXXXXX  (Google Analytics 4)
   ADS: '',          // AW-XXXXXXXXX  (Google Ads)
   ADS_LEAD: '',     // мітка конверсії «Заявка», напр. AbC-dEfGhIj
   ADS_CALL: '',     // мітка конверсії «Клік по телефону/месенджеру»
