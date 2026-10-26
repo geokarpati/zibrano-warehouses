@@ -1,0 +1,19 @@
+<!doctype html><html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Заявку отримано · ZIBRANO</title><meta name="robots" content="noindex"><link rel="icon" href="../assets/img/favicon.png"><link rel="stylesheet" href="../assets/page.css">
+<script src="../assets/zb.js"></script></head>
+<body><header><div class="w"><a href="../"><img src="../assets/img/logo.svg" width="30" alt="">ZIBRANO</a></div></header>
+<main class="w">
+<h1>Дякуємо, заявку отримано</h1>
+<p>Менеджер зателефонує вам найближчим робочим часом (пн–пт, 9:00–18:00), щоб уточнити технічне завдання. Після цього інженер-кошторисник підготує комерційну пропозицію з обсягом робіт і графіком.</p>
+<p>Якщо питання термінове: <a href="tel:+380676274344">+38 (067) 627-43-44</a> або <a href="mailto:sales@zibrano.com.ua">sales@zibrano.com.ua</a>.</p>
+<a class="btn" href="../">Повернутися на сайт</a>
+<p style="margin-top:40px">Ми також будуємо панельно-каркасні будинки: <a href="https://zibrano.com.ua" target="_blank" rel="noopener">zibrano.com.ua</a></p>
+</main>
+<script>
+(function(){
+  var d = {}; try { d = JSON.parse(sessionStorage.getItem('zb_lead') || '{}'); } catch(e) {}
+  // конверсію рахуємо один раз за відправку і лише якщо прийшли з форми
+  if (d && (d.area !== undefined)) { zbEvent('lead', {form: 'warehouse_quote', area: d.area || 'n/a', has_file: !!d.file}); try { sessionStorage.removeItem('zb_lead'); } catch(e) {} }
+})();
+</script>
+</body></html>

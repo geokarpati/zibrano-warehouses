@@ -22,7 +22,7 @@
 <link rel="apple-touch-icon" href="assets/img/favicon.png">
 <script>document.documentElement.className = document.documentElement.className.replace("no-js","js");</script>
 <link rel="icon" type="image/png" href="assets/img/favicon.png">
-<!-- Аналітика: вставте тут тег GTM / gtag.js. Події сторінки йдуть у window.dataLayer (див. track() у скрипті). -->
+<script src="assets/zb.js"></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -420,6 +420,10 @@ footer{background:#111813;color:var(--d2);padding:64px 0 40px;font-size:.92rem}
 .houses h2{font-size:clamp(1.5rem,2.8vw,2.4rem);margin-bottom:12px}
 .houses p{color:#3C3121;max-width:40em}
 @media (max-width:760px){.houses-in{grid-template-columns:1fr}.houses .btn{width:100%}}
+.msgs{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.msg{display:inline-flex!important;align-items:center;gap:8px;min-height:44px;padding:0 16px!important;border-radius:999px;border:1px solid var(--line-dark);font:500 .92rem var(--font)!important;letter-spacing:0!important;text-decoration:none;transition:background-color .2s,border-color .2s}
+.msg svg{width:18px;height:18px}
+.msg:hover{background:var(--ink-2);border-color:var(--d2);color:var(--bg)!important}
 .mobile-cta{display:none}
 
 /* одна оркестрована поява hero */
@@ -965,21 +969,32 @@ footer{background:#111813;color:var(--d2);padding:64px 0 40px;font-size:.92rem}
       <div class="contacts">
         <a href="tel:+380676274344" data-cta="phone">+38 (067) 627-43-44</a>
         <a href="mailto:sales@zibrano.com.ua" data-cta="email">sales@zibrano.com.ua</a>
-        <span>Відділ продажів ZIBRANO</span>
+        <span>Відділ продажів ZIBRANO. Можна написати в месенджер:</span>
+        <div class="msgs">
+          <a class="msg" data-msg="viber" href="viber://chat?number=%2B380676274344" aria-label="Написати у Viber"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M11.4 2C7.6 2 3.4 2.6 2.6 7.4c-.4 2.3-.4 5.2.2 7.6.6 2.4 2.3 3.6 4.2 4.1v2.7c0 .4.5.6.8.3l2.6-2.7c.4 0 .7 0 1.1.1 3.8 0 8-.6 8.8-5.4.4-2.3.4-5.2-.2-7.6C19.2 2.6 15.3 2 11.4 2zm4.9 13.3c-.4.6-1.2 1.2-1.9 1-2.4-.6-5.5-3.1-6.9-5.8-.6-1.1-.8-2-.6-2.6.2-.6.8-1.1 1.4-1.2.3 0 .5.1.7.4l1 1.4c.2.3.2.7 0 1l-.4.5c-.2.2-.2.5-.1.7.7 1.4 1.8 2.5 3.2 3.2.2.1.5.1.7-.1l.5-.4c.3-.2.7-.2 1 0l1.4 1c.3.2.4.6.2.9zM12 5.6c.2 0 .4-.2.4-.4s-.2-.4-.4-.4c-.2 0 .1 0 0 0 3.4.1 6 2.7 6.1 6.1 0 .2.2.4.4.4s.4-.2.4-.4c-.1-3.8-3.1-6.8-6.9-6.9V5.6zm.5 1.6c-.2 0-.4.1-.4.4 0 .2.1.4.4.4 1.8.2 3.1 1.6 3.3 3.4 0 .2.2.4.4.4s.4-.2.4-.4c-.2-2.2-1.9-4-4.1-4.2zm.3 1.8c-.2 0-.4.1-.4.3s.1.4.3.4c.6.1 1.1.6 1.2 1.2 0 .2.2.4.4.3.2 0 .4-.2.3-.4-.1-1-.9-1.7-1.8-1.8z"/></svg>Viber</a>
+          <a class="msg" data-msg="telegram" href="https://t.me/+380676274344" target="_blank" rel="noopener" aria-label="Написати в Telegram"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.9 4.3l-3.2 15c-.2 1.1-.9 1.3-1.8.8l-4.8-3.6-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9 8.9-8c.4-.3-.1-.5-.6-.2L6.4 13 1.6 11.5c-1-.3-1-1 .2-1.5l18.7-7.2c.9-.3 1.6.2 1.4 1.5z"/></svg>Telegram</a>
+          <a class="msg" data-msg="whatsapp" href="https://wa.me/380676274344" target="_blank" rel="noopener" aria-label="Написати у WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm5.8 14.1c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.3 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l2 .9c.3.2.5.2.6.4.1.1.1.7-.1 1.4z"/></svg>WhatsApp</a>
+        </div>
       </div>
     </div>
-    <form class="lead-form" id="leadForm" novalidate>
+    <form class="lead-form" id="leadForm" novalidate method="POST" action="https://formsubmit.co/sales@zibrano.com.ua" enctype="multipart/form-data">
+      <input type="hidden" name="_subject" value="Заявка: склад (zibrano.info)">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://zibrano.info/dyakuiemo/">
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+      <div id="leadHidden" hidden></div>
       <div class="carried" id="carried" hidden><b>Параметри з попереднього запиту</b><ul id="carriedList"></ul><button type="button" id="editCalc">Змінити параметри</button></div>
-      <div class="field"><label for="lName">Ім'я</label><input type="text" id="lName" name="name" autocomplete="name"></div>
-      <div class="field"><label for="lPhone">Телефон</label><input type="tel" id="lPhone" name="phone" autocomplete="tel" inputmode="tel" placeholder="+380" required aria-describedby="lPhoneErr"><span class="err" id="lPhoneErr" aria-live="polite"></span></div>
-      <div class="field"><label for="lCompany">Компанія <span class="hint">необов'язково</span></label><input type="text" id="lCompany" name="company" autocomplete="organization"></div>
+      <div class="field"><label for="lName">Ім'я</label><input type="text" id="lName" name="Імʼя" autocomplete="name"></div>
+      <div class="field"><label for="lPhone">Телефон</label><input type="tel" id="lPhone" name="Телефон" autocomplete="tel" inputmode="tel" placeholder="+380" required aria-describedby="lPhoneErr"><span class="err" id="lPhoneErr" aria-live="polite"></span></div>
+      <div class="field"><label for="lCompany">Компанія <span class="hint">необов'язково</span></label><input type="text" id="lCompany" name="Компанія" autocomplete="organization"></div>
       <div class="field"><label for="lEmail">Email <span class="hint">необов'язково</span></label><input type="email" id="lEmail" name="email" autocomplete="email" inputmode="email"></div>
       <div class="drop" id="drop">
         <svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 3H7a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><path d="M15 3v6h6M13 19v-7M10 15l3-3 3 3"/></svg>
         <div><b id="dropTitle">Додати креслення або ТЗ</b><span id="dropHint">PDF, DWG, DXF, JPG, PNG, до 20 МБ</span></div>
-        <input type="file" id="lFile" name="drawing" accept=".pdf,.dwg,.dxf,.jpg,.jpeg,.png" aria-label="Додати креслення або технічне завдання">
+        <input type="file" id="lFile" name="attachment" accept=".pdf,.dwg,.dxf,.jpg,.jpeg,.png" aria-label="Додати креслення або технічне завдання">
       </div>
-      <div class="field full"><label for="lNote">Коментар <span class="hint">необов'язково</span></label><textarea id="lNote" name="note" placeholder="Наявність ділянки і фундаменту, ворота, рампа, особливі вимоги"></textarea></div>
+      <div class="field full"><label for="lNote">Коментар <span class="hint">необов'язково</span></label><textarea id="lNote" name="Коментар" placeholder="Наявність ділянки і фундаменту, ворота, рампа, особливі вимоги"></textarea></div>
       <div class="form-foot">
         <button class="btn btn-lime" type="submit" id="lSubmit">Отримати розрахунок</button>
         <small>Надсилаючи форму, ви погоджуєтеся з <a href="polityka-konfidentsiinosti/">політикою конфіденційності</a>.</small>
@@ -1014,9 +1029,6 @@ footer{background:#111813;color:var(--d2);padding:64px 0 40px;font-size:.92rem}
 <a class="btn btn-lime mobile-cta" href="#kalkuliator" data-cta="mobile_sticky">Розрахувати вартість</a>
 
 <script>
-/* Інтеграція з CRM: URL, що приймає multipart/form-data методом POST (поля форми + файл "drawing").
-   Порожньо — заявка відкриється листом на sales@ (без файлу). */
-var FORM_ENDPOINT = '';
 
 (function(){
   'use strict';
@@ -1167,7 +1179,7 @@ var FORM_ENDPOINT = '';
     q('carried').hidden = !any;
   }
   q('toLead').addEventListener('click', function(){
-    readCalc(); carry(); track('calc_to_lead', {area: calcData.area || 'n/a'});
+    readCalc(); carry(); track('calc_to_lead', {area: calcData.area || 'n/a'}); zbEvent('calc', {area: calcData.area || 'n/a'});
     q('kontakty').scrollIntoView({behavior: reduce ? 'auto' : 'smooth'});
     setTimeout(function(){ q('lPhone').focus({preventScroll:true}); }, reduce ? 0 : 600);
   });
@@ -1189,27 +1201,25 @@ var FORM_ENDPOINT = '';
   var digits = function(s){ return s.replace(/\D/g, ''); };
   phone.addEventListener('input', function(){ if (phone.getAttribute('aria-invalid') && digits(phone.value).length >= 10) { phone.removeAttribute('aria-invalid'); perr.textContent = ''; } });
   var utm = new URLSearchParams(location.search);
+  var labelsUA = {area:'Площа', geometry:'Геометрія', volume:"Об'єм", purpose:'Призначення', panels:'Панелі', region:'Регіон', term:'Строк'};
+  var srcData = {}; try { var st = JSON.parse(localStorage.getItem('zb_src') || 'null'); if (st && Date.now() - st.t < 30 * 864e5) srcData = st.v; } catch(e) {}
+  utm.forEach(function(v, k){ if (/^(utm_|gclid|fbclid)/.test(k)) srcData[k] = v; });
   lf.addEventListener('submit', function(e){
-    e.preventDefault();
-    if (digits(phone.value).length < 10) { phone.setAttribute('aria-invalid','true'); perr.textContent = 'Вкажіть номер з кодом оператора, наприклад +380 67 123 45 67.'; phone.focus(); return; }
+    if (digits(phone.value).length < 10) { e.preventDefault(); phone.setAttribute('aria-invalid','true'); perr.textContent = 'Вкажіть номер з кодом оператора, наприклад +380 67 123 45 67.'; phone.focus(); return; }
     readCalc();
-    var fd = new FormData(lf);
-    Object.keys(calcData).forEach(function(k){ if (calcData[k]) fd.append('calc_' + k, calcData[k]); });
-    ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid'].forEach(function(k){ if (utm.get(k)) fd.append(k, utm.get(k)); });
-    fd.append('page', location.href);
-    var finish = function(){ q('lDone').hidden = false; btn.disabled = true; btn.textContent = 'Заявку надіслано'; track('generate_lead', {form:'warehouse_quote', has_file: !!(file.files && file.files[0])}); };
-    if (FORM_ENDPOINT) {
-      btn.disabled = true; btn.textContent = 'Надсилаємо…';
-      fetch(FORM_ENDPOINT, {method:'POST', body: fd}).then(function(r){ if (!r.ok) throw new Error(r.status); finish(); })
-        .catch(function(){ btn.disabled = false; btn.textContent = 'Отримати розрахунок'; perr.textContent = 'Не вдалося надіслати заявку. Спробуйте ще раз або зателефонуйте +38 (067) 627-43-44.'; });
-    } else {
-      var lines = [];
-      fd.forEach(function(v, k){ if (typeof v === 'string' && v) lines.push(k + ': ' + v); });
-      if (file.files && file.files[0]) lines.push('Креслення: ' + file.files[0].name + ' (додайте файл до цього листа)');
-      location.href = 'mailto:sales@zibrano.com.ua?subject=' + encodeURIComponent('Запит на розрахунок складу' + (calcData.area ? ', ' + calcData.area : '')) + '&body=' + encodeURIComponent(lines.join('\n'));
-      finish();
-    }
+    var box = q('leadHidden'); box.innerHTML = '';
+    var put = function(k, v){ var i = document.createElement('input'); i.type = 'hidden'; i.name = k; i.value = v; box.appendChild(i); };
+    Object.keys(labelsUA).forEach(function(k){ if (calcData[k]) put(labelsUA[k], calcData[k]); });
+    Object.keys(srcData).forEach(function(k){ put(k, srcData[k]); });
+    put('Сторінка', location.href);
+    try { sessionStorage.setItem('zb_lead', JSON.stringify({area: calcData.area || '', file: !!(file.files && file.files[0])})); } catch(err) {}
+    btn.disabled = true; btn.textContent = 'Надсилаємо…';
+    // форма йде звичайним POST: так надсилається і файл креслення; після відправки — сторінка «Дякуємо»
   });
+  window.addEventListener('pageshow', function(){ btn.disabled = false; btn.textContent = 'Отримати розрахунок'; });
+
+  // клік по телефону/месенджеру = конверсія «контакт»
+  document.querySelectorAll('a[href^="tel:"],a[data-msg]').forEach(function(a){ a.addEventListener('click', function(){ zbEvent('contact', {method: a.dataset.msg || 'phone'}); }); });
 
   // мобільна кнопка ховається, коли форма на екрані
   var mcta = document.querySelector('.mobile-cta');
