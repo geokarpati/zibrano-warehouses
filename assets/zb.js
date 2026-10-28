@@ -1,9 +1,9 @@
 /* ===== НАЛАШТУВАННЯ РЕКЛАМИ: вставте ID, порожнє значення = вимкнено ===== */
 window.ZB = {
   GA4: 'G-R69DVC9LL5', // G-XXXXXXXXXX  (Google Analytics 4)
-  ADS: 'AW-980450167',          // AW-XXXXXXXXX  (Google Ads)
-  ADS_LEAD: 'RwjECNHBsqodEPf2wdMD',     // мітка конверсії «Заявка», напр. AbC-dEfGhIj
-  ADS_CALL: 'tHI0CNTBsqodEPf2wdMD',     // мітка конверсії «Клік по телефону/месенджеру»
+  ADS: 'AW-18542395330',          // AW-XXXXXXXXX  (Google Ads)
+  ADS_LEAD: 'WlJICNDn76wdEML_2YlF',     // мітка конверсії «Заявка», напр. AbC-dEfGhIj
+  ADS_CALL: 'LuRVCNPn76wdEML_2YlF',     // мітка конверсії «Клік по телефону/месенджеру»
   META: ''          // ID пікселя Meta, напр. 123456789012345
 };
 window.dataLayer = window.dataLayer || [];
