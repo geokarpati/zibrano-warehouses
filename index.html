@@ -402,6 +402,11 @@ input[aria-invalid=true]{border-color:var(--err);background:#FBF0EC}
 .form-foot small{color:var(--t2);font-size:.82rem;max-width:30em}
 .done{grid-column:1 / -1;border-radius:12px;padding:18px 20px;background:#E7F5C8}
 .done[hidden]{display:none}
+.fail{grid-column:1 / -1;border-radius:12px;padding:16px 18px;background:#FBEDE8;border-left:3px solid var(--err);font-size:.95rem}
+.fail[hidden]{display:none}
+.fail-acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.fail-acts .btn{min-height:44px;padding:0 18px;font-size:.9rem}
+.btn-ghost-d{border-color:var(--ink);color:var(--ink);background:transparent}
 .done b{font-weight:600}
 
 /* підвал */
@@ -999,6 +1004,7 @@ footer{background:#111813;color:var(--d2);padding:64px 0 40px;font-size:.92rem}
         <button class="btn btn-lime" type="submit" id="lSubmit">Отримати розрахунок</button>
         <small>Надсилаючи форму, ви погоджуєтеся з <a href="polityka-konfidentsiinosti/">політикою конфіденційності</a>.</small>
       </div>
+      <div class="fail" id="lFail" role="alert" hidden></div>
       <div class="done" id="lDone" role="status" hidden><b>Заявку отримано.</b> Ми зв'яжемося з вами, щоб уточнити технічне завдання. Терміново: <a href="tel:+380676274344">+38 (067) 627-43-44</a>.</div>
     </form>
   </div>
@@ -1213,9 +1219,28 @@ footer{background:#111813;color:var(--d2);padding:64px 0 40px;font-size:.92rem}
     Object.keys(srcData).forEach(function(k){ put(k, srcData[k]); });
     put('Сторінка', location.href);
     try { sessionStorage.setItem('zb_lead', JSON.stringify({area: calcData.area || '', file: !!(file.files && file.files[0])})); } catch(err) {}
-    btn.disabled = true; btn.textContent = 'Надсилаємо…';
-    // форма йде звичайним POST: так надсилається і файл креслення; після відправки — сторінка «Дякуємо»
+    btn.disabled = true; btn.textContent = 'Надсилаємо…'; perr.textContent = '';
+    // надсилаємо через AJAX: якщо сервіс пошти недоступний, заявка не губиться — показуємо резервні способи
+    e.preventDefault();
+    var fd = new FormData(lf), ctl = window.AbortController ? new AbortController() : null;
+    var timer = setTimeout(function(){ if (ctl) ctl.abort(); }, 15000);
+    fetch('https://formsubmit.co/ajax/sales@zibrano.com.ua', {method: 'POST', body: fd, headers: {'Accept': 'application/json'}, signal: ctl ? ctl.signal : undefined})
+      .then(function(r){ return r.json().then(function(j){ if (!r.ok || String(j.success) !== 'true') throw new Error(j.message || r.status); }); })
+      .then(function(){ clearTimeout(timer); location.href = 'dyakuiemo/'; })
+      .catch(function(){ clearTimeout(timer); showFallback(fd); });
   });
+  function showFallback(fd){
+    btn.disabled = false; btn.textContent = 'Спробувати ще раз';
+    var lines = []; fd.forEach(function(v, k){ if (typeof v === 'string' && v && k.charAt(0) !== '_') lines.push(k + ': ' + v); });
+    var mail = 'mailto:sales@zibrano.com.ua?subject=' + encodeURIComponent('Заявка: склад (zibrano.info)') + '&body=' + encodeURIComponent(lines.join('\n'));
+    var box = q('lFail');
+    box.innerHTML = '<b>Не вдалося надіслати заявку автоматично.</b> Ваші дані не втрачено, оберіть зручний спосіб:'
+      + '<div class="fail-acts"><a class="btn btn-dark" href="' + mail + '">Надіслати листом</a>'
+      + '<a class="btn btn-ghost-d" href="tel:+380676274344">Зателефонувати</a>'
+      + '<a class="btn btn-ghost-d" href="viber://chat?number=%2B380937601326">Viber</a></div>';
+    box.hidden = false;
+    box.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ zbEvent('contact', {method: 'fallback_' + (a.textContent || '').trim()}); }); });
+  }
   window.addEventListener('pageshow', function(){ btn.disabled = false; btn.textContent = 'Отримати розрахунок'; });
 
   // клік по телефону/месенджеру = конверсія «контакт»
