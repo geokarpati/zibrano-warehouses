@@ -1227,8 +1227,17 @@ footer{background:#111813;color:var(--d2);padding:64px 0 40px;font-size:.92rem}
     fetch('https://formsubmit.co/ajax/sales@zibrano.com.ua', {method: 'POST', body: fd, headers: {'Accept': 'application/json'}, signal: ctl ? ctl.signal : undefined})
       .then(function(r){ return r.json().then(function(j){ if (!r.ok || String(j.success) !== 'true') throw new Error(j.message || r.status); }); })
       .then(function(){ clearTimeout(timer); location.href = 'dyakuiemo/'; })
-      .catch(function(){ clearTimeout(timer); showFallback(fd); });
+      .catch(function(){ clearTimeout(timer); sendBackup(fd); });
   });
+  // резервний канал: Web3Forms (без файлу — лише текст і назва файлу)
+  function sendBackup(fd){
+    var data = {access_key: '8072da1d-73d5-4316-a323-977c0e8a3866', subject: 'Заявка: склад (zibrano.info) — резервний канал', from_name: 'zibrano.info'};
+    fd.forEach(function(v, k){ if (k.charAt(0) === '_') return; if (typeof v === 'string') { if (v) data[k] = v; } else if (v && v.name) { data['Креслення (файл не передано, попросіть надіслати)'] = v.name; } });
+    fetch('https://api.web3forms.com/submit', {method: 'POST', headers: {'Content-Type': 'application/json', 'Accept': 'application/json'}, body: JSON.stringify(data)})
+      .then(function(r){ return r.json().then(function(j){ if (!r.ok || !j.success) throw new Error(j.message || r.status); }); })
+      .then(function(){ location.href = 'dyakuiemo/'; })
+      .catch(function(){ showFallback(fd); });
+  }
   function showFallback(fd){
     btn.disabled = false; btn.textContent = 'Спробувати ще раз';
     var lines = []; fd.forEach(function(v, k){ if (typeof v === 'string' && v && k.charAt(0) !== '_') lines.push(k + ': ' + v); });
